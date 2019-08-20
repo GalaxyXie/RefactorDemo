@@ -1,17 +1,16 @@
 package gildedRose;
 
-public class AgedBrie extends Item{
+public class AgedBrie implements Strategy{
 
-  public AgedBrie(String name, int sellIn, int quality) {
-    super(name, sellIn, quality);
+  public AgedBrie() {
   }
 
   @Override
-  public void updateQualityAndSellin() {
-    qualitySmallerThan50thenAdd1();
-    this.sellIn = this.sellIn - 1;
-    if (this.sellIn < 0){
-      qualitySmallerThan50thenAdd1();
+  public void updateQualityAndSellin(Item item) {
+    item.qualitySmallerThan50thenAdd1();
+    item.sellIn = item.sellIn - 1;
+    if (item.sellIn < 0){
+      item.qualitySmallerThan50thenAdd1();
     }
   }
 }

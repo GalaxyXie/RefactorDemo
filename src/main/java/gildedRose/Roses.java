@@ -6,16 +6,20 @@ public class Roses {
   private static final String BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert";
   private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
-  public Item getItem(Item item) {
+  public void getItem(Item item) {
+    Item newitem = new Item(new AgedBrie());
     switch (item.name) {
       case AGEBRIE:
-        return new AgedBrie(item.name, item.sellIn, item.quality);
+        newitem.executeStrategy(item);
       case BACKSTAGE:
-        return new Backstage(item.name, item.sellIn, item.quality);
+        newitem = new Item(new Backstage());
+        newitem.executeStrategy(item);
       case SULFURAS:
-        return new Sulfuras(item.name, item.sellIn, item.quality);
+        newitem = new Item(new Sulfuras());
+        newitem.executeStrategy(item);
       default:
-        return new Other(item.name, item.sellIn, item.quality);
+        newitem = new Item(new Other());
+        newitem.executeStrategy(item);
     }
 
   }

@@ -1,15 +1,10 @@
 package gildedRose;
 
-public class Other extends Item {
-
-  public Other(String name, int sellIn, int quality) {
-    super(name, sellIn, quality);
-  }
-
+public class Other implements Strategy {
   @Override
-  public void updateQualityAndSellin() {
-    qualitiyBiggerThan0ThenSub1();
-    this.sellIn = this.sellIn - 1;
-    qualitiyBiggerThan0ThenSub1();
+  public void updateQualityAndSellin(Item item) {
+    item.qualitiyBiggerThan0ThenSub1();
+    item.sellIn = item.sellIn - 1;
+    item.qualitiyBiggerThan0ThenSub1();
   }
 }
